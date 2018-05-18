@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         binding.takescreenshot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                collectData.takeScreenshot();
+                collectData.takeScreenshot(false);
                 collectData.getDeviceInfo();
             }
         });

